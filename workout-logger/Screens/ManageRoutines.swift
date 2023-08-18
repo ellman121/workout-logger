@@ -15,9 +15,9 @@ struct ManageRoutines: View {
         NavigationView {
             List(viewModel.routines) { routine in
                 NavigationLink {
-                    Text("Hello")
+                    RoutineDetail(routineId: routine.id!)
                 } label: {
-                    Text(routine.id!)
+                    Text(routine.title)
                 }
             }
             .navigationTitle("Routines")
@@ -26,7 +26,7 @@ struct ManageRoutines: View {
             }
         }
         .onAppear() {
-            self.viewModel.fetchExercises()
+            self.viewModel.fetchRoutines()
         }
     }
 }

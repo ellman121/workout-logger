@@ -9,13 +9,14 @@ import Foundation
 
 struct Exercise: Identifiable, Codable {
     var id: String?
+    var title: String
 }
 
 let mockExercises = [
-    Exercise(id: "1"),
-    Exercise(id: "2"),
-    Exercise(id: "3"),
-    Exercise(id: "4"),
+    Exercise(id: "1", title: "First"),
+    Exercise(id: "2", title: "Second"),
+    Exercise(id: "3", title: "Third"),
+    Exercise(id: "4", title: "Fourth"),
 ]
 
 class ExerciseViewModel: ObservableObject {

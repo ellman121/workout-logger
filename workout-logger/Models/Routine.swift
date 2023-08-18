@@ -9,12 +9,13 @@ import Foundation
 
 struct Routine: Identifiable, Codable {
     var id: String?
+    var title: String = ""
     var exercises: [Exercise] = []
 }
 
-let mockRoutines = [
-    Routine(id: "1", exercises: [Exercise(id: "some exercise")]),
-    Routine(id: "2", exercises: [Exercise(id: "first"), Exercise(id: "Second")]),
+var mockRoutines = [
+    Routine(id: "1", title: "initial 1", exercises: [Exercise(id: "some exercise", title: "First")]),
+    Routine(id: "2", title: "initial 2", exercises: [Exercise(id: "first", title: "First"), Exercise(id: "Second", title: "Second")]),
 ]
 
 class RoutineViewModel: ObservableObject {
@@ -23,7 +24,23 @@ class RoutineViewModel: ObservableObject {
     @Published var routines = [Routine]()
     @Published var loading = false
     
-    func fetchExercises() {
+    func fetchRoutine(id: String) -> Routine? {
+        self.loading = true
+        
+        self.loading = false
+        return mockRoutines.first(where: {$0.id == id})
+    }
+    
+    func setRoutine(routine: Routine) {
+        routines = routines
+            .filter { $0.id != routine.id }
+        
+        routines.append(routine)
+        mockRoutines = routines
+        mockRoutines.append(routine)
+    }
+    
+    func fetchRoutines() {
         self.loading = true
         
         self.routines = mockRoutines

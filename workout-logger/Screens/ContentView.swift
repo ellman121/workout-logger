@@ -15,15 +15,15 @@ struct ContentView: View {
                     Image(systemName: "play.circle")
                     Text("Begin Workout")
                 }
-            ManageExercises()
-                .tabItem {
-                    Image(systemName: "dumbbell")
-                    Text("Manage Exercises")
-                }
             ManageRoutines()
                 .tabItem {
                     Image(systemName: "figure.run.square.stack")
                     Text("Manage Routines")
+                }
+            ManageExercises()
+                .tabItem {
+                    Image(systemName: "dumbbell")
+                    Text("Manage Exercises")
                 }
         }
     }
